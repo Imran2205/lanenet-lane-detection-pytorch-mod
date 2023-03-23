@@ -13,6 +13,7 @@ import numpy as np
 from PIL import Image
 import pandas as pd
 import cv2
+import matplotlib.pyplot as plt
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -56,6 +57,9 @@ def test():
     cv2.imwrite(os.path.join('test_output', 'input.jpg'), input)
     cv2.imwrite(os.path.join('test_output', 'instance_output.jpg'), instance_pred.transpose((1, 2, 0)))
     cv2.imwrite(os.path.join('test_output', 'binary_output.jpg'), binary_pred)
+
+    plt.imshow(binary_pred, cmap='gray')
+    plt.show()
 
 
 if __name__ == "__main__":
